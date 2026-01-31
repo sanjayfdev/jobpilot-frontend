@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  /* This maps your CSS variables to Tailwind utility names */
+  --color-primary-bg: var(--bg-color);
+  --color-primary-text: var(--text-color);
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+}
+
+.dark {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
