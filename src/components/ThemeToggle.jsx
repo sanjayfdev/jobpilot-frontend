@@ -8,11 +8,13 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="
         btn btn-ghost btn-circle
-        transition-all duration-300
+        transition-transform duration-200
+        hover:scale-105
+        active:scale-95
       "
-      title="Toggle Theme"
+      aria-label="Toggle theme"
     >
-      {theme === "light" ? "🌙" : "☀️"}
+      {theme === "light" ? " 🌙" : "☀️"}
     </button>
   );
 };

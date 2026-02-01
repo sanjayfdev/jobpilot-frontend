@@ -8,7 +8,7 @@ import { ThemeProvider } from './context/ThemeContext.jsx'
 createRoot(document.getElementById('root')).render(
   <ThemeProvider>
     <AuthProvider>
-      <App />
+      <App/>
     </AuthProvider>
   </ThemeProvider>
 
