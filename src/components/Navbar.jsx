@@ -18,6 +18,10 @@ const Navbar = () => {
       {/* Right */}
       <div className="flex-none">
         <ThemeToggle />
+        <button onClick={()=> {
+          localStorage.clear();
+          window.location.href = "/login";
+        }} className="btn btn-ghost">LogOut</button>
       </div>
     </div>
   );
