@@ -5,7 +5,7 @@ const CreateJobModal = ({ onClose, onSuccess }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    await API.post("/jobs", data);
+    await API.post("/jobs/create-job", data);
     onSuccess();
     onClose();
   };
