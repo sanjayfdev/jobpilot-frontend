@@ -21,10 +21,12 @@
 .dark {
   --bg-color: #020617; /* slate-950 */
   --card-bg: #010722; /* slate-900 */
-  --navbar-bg: #020617; /* slate-950 */
+  --navbar-bg: #010722; /* slate-950 */
   --text-color: #e5e7eb; /* gray-200 */
   --muted-text: #9ca3af; /* gray-400 */
 }
+
+
 
 @keyframes fade-in {
   from {
@@ -57,10 +59,6 @@
     transform: scale(1);
   }
 }
-
-/* .modal-box {
-  animation: scaleFade 0.2s ease-out;
-} */
 
 .loader-ring {
   width: 48px;

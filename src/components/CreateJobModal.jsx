@@ -24,7 +24,6 @@ const CreateJobModal = ({ onClose, onSuccess, jobToEdit = null }) => {
   const onSubmit = async (data) => {
     try {
       if (jobToEdit) {
-        // await API.put(`/jobs/${jobToEdit._id}`, data);
         await toast.promise(API.put(`/jobs/${jobToEdit._id}`, data), {
           loading: "Updating job...",
           success: "Job updated successfully!",

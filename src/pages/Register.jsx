@@ -15,8 +15,11 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      await API.post("/auth/register", data);
-      toast.success("Registration successful! Please login.");
+      const res = await toast.promise(API.post("auth/register", data), {
+        loading: "Loading..",
+        success: "Registration successful! Please login.",
+        error: (err) => err?.response?.data?.message || "Failed to Registered",
+      });
       navigate("/login");
     } catch (err) {
       toast.error(err.response?.data?.message || "Registration failed");
@@ -93,6 +96,7 @@ const Register = () => {
               w-full py-2 rounded-md
               font-semibold
               transition-colors duration-200
+              btn
             "
           >
             Register
@@ -101,7 +105,7 @@ const Register = () => {
 
         {/* Footer */}
         <div className="mt-4 text-center">
-          <p className="text-sm dark:text-white light:text-slate-900">
+          <p className="text-sm text-slate-950">
             Already have an account?{" "}
             <a href="/login" className="hover:underline text-blue-950">
               Login

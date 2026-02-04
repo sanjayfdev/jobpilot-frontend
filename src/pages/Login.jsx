@@ -3,6 +3,7 @@ import API from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import coverImage from "../assets/login.jpg"
 
 const Login = () => {
   const {
@@ -12,18 +13,18 @@ const Login = () => {
   } = useForm();
   const { login } = useAuth();
   const navigate = useNavigate();
-  const coverImage = "https://images.pexels.com/photos/7114/laptop-mobile.jpg";
 
   const onSubmit = async (e) => {
-    console.log(e);
     try {
-      const res = await API.post("/auth/login", e);
-      console.log(res);
+      const res = await toast.promise(API.post(`/auth/login/`, e), {
+        loading: "Login...",
+        success: "Welcome Back!",
+        error: (err) => err?.response?.data?.message || "Failed to login",
+      });
       login(res.data);
-       toast.success("Welcome back!");
       navigate("/dashboard");
     } catch (err) {
-      toast.error(err.response.data.message);
+      toast.error(err?.response?.data?.message || "Something went wrong");
     }
   };
   return (
@@ -58,11 +59,11 @@ const Login = () => {
         </form>
 
         <div className="mt-4 text-center">
-          <p className="text-sm text-primary-text dark:text-black light:text-white">
+          <p className="text-sm text-black">
             Don't have an account?{" "}
             <a
               href="/register"
-              className="dark:text-white light:text-blue-600 hover:underline"
+              className="text-blue-900 hover:underline"
             >
               Register
             </a>

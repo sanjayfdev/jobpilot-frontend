@@ -1,31 +1,26 @@
+import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const {theme} = useTheme();
+  const { theme } = useTheme();
+  const {logout} = useAuth();
   return (
     <nav
       className="
         flex items-center justify-between
         px-6 py-3
         shadow-sm
-        transition-colors duration-300
-        
-      "
-      style={{
-        backgroundColor: "var(--navbar-bg)",
-        color: "var(--text-color)",
-      }}
+        transition-colors duration-30 bg-navbar-bg"
     >
       {/* Left */}
       <h1 className="text-xl font-bold tracking-tight">JobPilot</h1>
 
       {/* Right */}
       <div className="flex items-center gap-3">
-       <span className="text-sm">{theme}</span> <ThemeToggle />
-
+        <span className="text-sm">{theme}</span> <ThemeToggle />
         <div className="dropdown dropdown-end">
           {/* The clickable circle image */}
           <div
@@ -47,22 +42,16 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
+              <a className="justify-between dark:text-white">
                 Profile
                 <span className="badge">New</span>
               </a>
             </li>
             <li>
-              <a>Settings</a>
+              <a className="dark:text-white">Settings</a>
             </li>
             <li>
-              <a
-                className="text-error font-semibold"
-                onClick={() => {
-                  localStorage.clear();
-                  navigate("/login");
-                }}
-              >
+              <a className="text-error font-semibold " onClick={logout}>
                 Logout
               </a>
             </li>
